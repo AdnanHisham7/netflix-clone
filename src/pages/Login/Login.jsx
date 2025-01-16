@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 import logo from '../../assets/logo.png'
+import { login, signup } from '../../Firebase'
 import spinner from '../../assets/netflix_spinner.gif'
 
 const Login = () => {
@@ -9,6 +10,19 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
+
+  
+  const userAuth = async(e)=>{
+    e.preventDefault()
+    setLoading(true);
+    if(signState === "Sign In"){
+      await login(email, password);
+    }else{
+      await signup(name, email, password)
+    }
+    setLoading(false);
+  }
+
 
   return (
     loading?<div className="login-spinner">
@@ -26,7 +40,7 @@ const Login = () => {
 
           <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
 
-          <button>{signState}</button>
+          <button onClick={userAuth} type='submit'>{signState}</button>
           <div className='form-help'>
             <div className="remember">
               <input type="checkbox" />

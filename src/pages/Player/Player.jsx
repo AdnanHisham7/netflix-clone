@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Player.css'
 import backArrowIcon from '../../assets/back_arrow_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
+const API_TOKEN = import.meta.env.VITE_IMDB_API_TOKEN;
 
 const Player = () => {
 
@@ -18,10 +19,11 @@ const Player = () => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNGY4ZTJmMmIwM2RiODhlOWYxYTI3ZjNjOThlMTA4ZSIsIm5iZiI6MTczNzAxMDA5Ni44NzY5OTk5LCJzdWIiOiI2Nzg4YWJiMDg4YzU1ODU2ZDUxZDQyZGYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.onuqqV2CXUhV7bbtO78UrBPT8ARe1bUDxGDlQqzd5_s'
+      Authorization: `Bearer ${API_TOKEN}`
     }
   };
-
+  
+ console.log(apiData)
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
       .then(res => res.json())

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './TitleCards.css'
-import cards_data from '../../assets/cards/Cards_data'
 import { Link } from 'react-router-dom';
-
+const API_TOKEN = import.meta.env.VITE_IMDB_API_TOKEN;
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
@@ -12,9 +11,10 @@ const TitleCards = ({ title, category }) => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNGY4ZTJmMmIwM2RiODhlOWYxYTI3ZjNjOThlMTA4ZSIsIm5iZiI6MTczNzAxMDA5Ni44NzY5OTk5LCJzdWIiOiI2Nzg4YWJiMDg4YzU1ODU2ZDUxZDQyZGYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.onuqqV2CXUhV7bbtO78UrBPT8ARe1bUDxGDlQqzd5_s'
+      Authorization: `Bearer ${API_TOKEN}`
     }
   };
+  
   
 
 
@@ -40,7 +40,6 @@ const TitleCards = ({ title, category }) => {
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
           return <Link to={`/player/${card.id}`} className="card" key={index}>
-            <p>{card.id}</p>
             <img src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path} alt={card.name} />
             <p>{card.original_title}</p>
           </Link>
