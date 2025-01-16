@@ -28,13 +28,13 @@ A fully responsive Netflix Clone built with React.js, featuring Firebase authent
 ## **Screenshots**
 
 - **Login Page**  
-  ![Login Page Screenshot](./screenshots/login-page.png)
+  ![Login Page Screenshot](./public/screenshots/login-page.png)
 
 - **Home Page with Movie Categories**  
-  ![Home Page Screenshot](./screenshots/home-page.png)
+  ![Home Page Screenshot](./public/screenshots/home-page.png)
 
 - **Video Playback Page**  
-  ![Video Page Screenshot](./screenshots/video-page.png)
+  ![Video Page Screenshot](./public/screenshots/video-page.png)
 
 ---
 
